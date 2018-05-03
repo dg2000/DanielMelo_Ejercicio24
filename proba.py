@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def proba(x, landa):
 
-    norma = 1/(np.exp(-1) - np.exp(-20))
+    norma = 1.0/(np.exp(-1) - np.exp(-20))
     return (norma/landa)*np.exp(-x/landa)
 
 graf = np.linspace(1e-6, 100.0, 2000)
@@ -19,9 +19,16 @@ for i in range(len(graf)):
 
         p[i] = p[i] * proba(pos[j], graf[i])
 
-
+p = p/(np.sum(p)*100.0/2000.0)
+        
 plt.plot(graf, p)
-plt.show()
+plt.xlabel("landa")
+plt.ylabel("Probabilidad")
+plt.title("Probabilidad vs landa")
+plt.savefig("Probabilidad vs landa.png")
+
+
+
 
 
 
